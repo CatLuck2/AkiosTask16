@@ -58,7 +58,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //CustomCellを生成
         let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! CustomCell
         //CustomCell内のUIに値を入れる
-        cell.configure(text: checkList[indexPath.row].text, keyCheck: checkList[indexPath.row].keyCheck)
+        cell.configure(checkItem: checkList[indexPath.row])
         cell.accessoryType = .detailButton
         return cell
     }
@@ -91,8 +91,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editItemSegue" {
             let nvc = segue.destination as! UINavigationController
-            let editCheckItemVC = nvc.viewControllers[0] as! EditCheckItem
-            guard let indexpathrow = sender as? Int else { return }
+            let editCheckItemVC = nvc.topViewController as! EditCheckItem
+            guard let indexpathrow = checkListTableView.indexPathForSelectedRow?.row else { return }
             editCheckItemVC.indexPathRow = indexpathrow
             editCheckItemVC.selectedCheckItem = checkList[indexpathrow]
         }
