@@ -9,6 +9,7 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
+    
 
     @IBOutlet private(set) weak var checkItemImage: UIImageView!
     @IBOutlet private(set) weak var checkItemLabel: UILabel!
@@ -21,15 +22,15 @@ class CustomCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(text:String, keyCheck:Bool) {
+    func configure(checkItem: CheckItem) {
         //チェックマークの画像を表示
-        if keyCheck {
+        if checkItem.keyCheck {
             checkItemImage.image = UIImage(systemName: "checkmark")
         } else {
             checkItemImage.image = UIImage(systemName: "")
         }
         //チェックリストのテキストを表示
-        checkItemLabel.text = text
+        checkItemLabel.text = checkItem.text
     }
     
 }
