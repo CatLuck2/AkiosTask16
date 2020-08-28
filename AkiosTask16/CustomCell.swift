@@ -10,10 +10,6 @@ import UIKit
 
 class CustomCell: UITableViewCell {
     
-    
-    
-    
-    
 
     @IBOutlet private(set) weak var checkItemImage: UIImageView!
     @IBOutlet private(set) weak var checkItemLabel: UILabel!
