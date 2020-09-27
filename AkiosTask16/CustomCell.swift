@@ -9,11 +9,10 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-    
 
     @IBOutlet private(set) weak var checkItemImage: UIImageView!
     @IBOutlet private(set) weak var checkItemLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -21,7 +20,7 @@ class CustomCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     func configure(checkItem: CheckItem) {
         //チェックマークの画像を表示
         if checkItem.keyCheck {
@@ -32,5 +31,5 @@ class CustomCell: UITableViewCell {
         //チェックリストのテキストを表示
         checkItemLabel.text = checkItem.text
     }
-    
+
 }

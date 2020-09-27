@@ -11,19 +11,19 @@ import UIKit
 class AddCheckItem: UIViewController {
 
     @IBOutlet private weak var checkItemTextField: UITextField!
-    
+
     private(set) var checkItem: CheckItem!
-    
-    @IBAction func addCheckItemToVC(_ sender: Any){
+
+    @IBAction private func addCheckItemToVC(_ sender: Any) {
         //checkItemTextFieldに文字が入力されてるか
-        if checkItemTextField.text == "" {
-            let alertController  = UIAlertController(title: "エラー", message: "1文字以上の文字を入力してください", preferredStyle: .alert)
-            let cancelAction     = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        if checkItemTextField.text!.isEmpty {
+            let alertController = UIAlertController(title: "エラー", message: "1文字以上の文字を入力してください", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             present(alertController, animated: true, completion: nil)
         } else {
             //入力値を追加用のデータに代入
-            checkItem = CheckItem(text:checkItemTextField.text!, keyCheck:false)
+            checkItem = CheckItem(text: checkItemTextField.text!, keyCheck: false)
             //ViewControllerに戻る
             performSegue(withIdentifier: "addItemUnWind", sender: nil)
         }
